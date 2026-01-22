@@ -29,10 +29,10 @@ public class UsuarioService {
     }
 
     public void atualizarUsuarioPorId(Long id, Usuario usuario) {
-        Usuario usuarioEntity = repository.findById(id).orElseThrow(()->
+        Usuario usuarioEntity = repository.findById(id).orElseThrow(() ->
                 new RuntimeException("Usuário não encontrado")
         );
-        Usuario usuarioAtualizado = usuario.builder()
+        Usuario usuarioAtualizado = Usuario.builder()
                 .email(usuario.getEmail() != null ? usuario.getEmail() : usuarioEntity.getEmail())
                 .nome(usuario.getNome() != null ? usuario.getNome() : usuarioEntity.getNome())
                 .id(usuarioEntity.getId())
